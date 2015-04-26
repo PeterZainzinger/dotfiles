@@ -1,6 +1,7 @@
 syntax enable
 let mapleader = ','			
 set cursorline
+set cursorcolumn
 set noswapfile
 set number
 set expandtab
@@ -34,6 +35,7 @@ highlight ColorColumn  ctermbg=236
 highlight LineNr       ctermbg=236 
 highlight CursorLineNr ctermbg=236 
 highlight CursorLine   ctermbg=236
+highlight CursorColumn ctermbg=236
 highlight StatusLineNC ctermbg=238 ctermfg=0
 highlight StatusLine   ctermbg=240 ctermfg=12
 highlight IncSearch    ctermbg=3   ctermfg=1
