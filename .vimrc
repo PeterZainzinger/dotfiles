@@ -20,6 +20,7 @@ set nofoldenable    " disable folding
 set showmode
 set clipboard=unnamed
 set backspace=indent,eol,start
+set autoindent 
 
 
 " --------------------------------------------------------------------
@@ -72,6 +73,10 @@ nnoremap <silent> <LEADER>gb  :Gblame<CR>
 nnoremap <silent> <LEADER>gd  :Gdiff<CR>
 let g:move_key_modifier = 'C'
 
+" Ack
+noremap <Leader>a :Ack <cword><cr>
+noremap <Leader>A :Ack <cWORD><cr>
+
 " --------------------------------------------------------------------
 " Folding 
 " --------------------------------------------------------------------
@@ -119,12 +124,14 @@ let g:pymode_rope_completion = 1
 let g:pymode_rope_autoimport = 1
 let g:pymode_rope_autoimport_import_after_complete = 1
 let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_autoimport_import_after_complete = 1
 
 let g:tex_flavor='latex'
 
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -pdf -f $*'
 set iskeyword+=:
+
 " --------------------------------------------------------------------
 "  Plugin Managment
 " --------------------------------------------------------------------
@@ -167,9 +174,20 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'matze/vim-move'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'elzr/vim-json'
 " --------------------------------------------------------------------
 " Fix my typos 
 " --------------------------------------------------------------------
 
 iabbr   lenght  length
 iabbr   lentgh  length
+
+
+" --------------------------------------------------------------------
+" Language specific settings
+" -------------------------------------------------------------------
+
+" Python 
+autocmd FileType python nnoremap <silent> <LEADER>f :PymodeLintAuto<CR>
+autocmd FileType python nnoremap <silent> <LEADER>l :PymodeLint<CR>
+
