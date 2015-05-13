@@ -2,7 +2,7 @@ export NDK_HOME=/usr/local/Cellar/android-ndk/r10d
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export ANDROID_NDK_HOME=$NDK_HOME
 export PATH=$PATH:$NDK_HOME
-export PATH=$PATH:$ANDROID_HOME
+#export PATH=$PATH:$ANDROID_HOME
 export PATH=$PATH:/usr/local/share/python
 export PATH=$PATH:/Users/peterzainzinger/.rvm/gems/ruby-2.1.2/gems/t-2.8.0/bin
 export PATH=$PATH:/usr/local/pyhtondebug
@@ -33,3 +33,8 @@ export PATH=/usr/local/bin:$PATH
 source /usr/local/bin/virtualenvwrapper.sh
 export TERM="screen-256color"
 alias tmux="tmux -2"
+alias pipall="pip install -r Requirements.txt"
+alias home="cd ~"
+POD_LOCAL_HOME=~/PodsLocal
+export POD_LOCAL_HOME
+alias python='python3'

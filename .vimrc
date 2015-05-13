@@ -21,7 +21,7 @@ set showmode
 set clipboard=unnamed
 set backspace=indent,eol,start
 set autoindent 
-
+set hlsearch
 
 " --------------------------------------------------------------------
 "  Theme
@@ -55,7 +55,6 @@ map <C-u> :TagbarToggle<CR>
 map <D-s> :w
 map <C-f> :CommandT<CR>
 map <C-g> :CommandTJump<CR>
-map <c-f> :call JsBeautify()<cr>
 noremap <Leader>q :q <CR>
 noremap <Leader>s :w <Enter>
 
@@ -97,6 +96,7 @@ let g:tex_fold_enabled=0
 let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
+
 " --------------------------------------------------------------------
 "  Plugin Config
 " --------------------------------------------------------------------
@@ -117,6 +117,9 @@ let g:tmuxline_separators = {
         \ 'space' : ' '}
 
 let python_highlight_all = 1
+let g:pymode_options_max_line_length = 80
+let g:pymode_lint_options_pep8 =
+        \ {'max_line_length': g:pymode_options_max_line_length}
 
 let g:pymode_rope = 1
 let g:pymode_rope_completion_bind = '<C-Space>'
@@ -132,6 +135,8 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -pdf -f $*'
 set iskeyword+=:
 
+let g:ycm_global_ycm_extra_conf = '~.ycm_extra_conf.py'
+let g:ycm_filetype_whitelist = { 'c': 1, 'cpp': 1,'hpp': 1,'h': 1}
 " --------------------------------------------------------------------
 "  Plugin Managment
 " --------------------------------------------------------------------
@@ -175,6 +180,9 @@ Plugin 'matze/vim-move'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'elzr/vim-json'
+Plugin 'tpope/vim-surround.git'
+Plugin 'Valloric/YouCompleteMe'
+
 " --------------------------------------------------------------------
 " Fix my typos 
 " --------------------------------------------------------------------
@@ -191,3 +199,5 @@ iabbr   lentgh  length
 autocmd FileType python nnoremap <silent> <LEADER>f :PymodeLintAuto<CR>
 autocmd FileType python nnoremap <silent> <LEADER>l :PymodeLint<CR>
 
+" CocoaPods
+"au BufNewFile,BufRead Podfile,*.podspec      set filetype=ruby
