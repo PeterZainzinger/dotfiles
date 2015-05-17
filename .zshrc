@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/peterzainzinger/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 export PS1="\W \$"
 source ~/.nvm/nvm.sh
 

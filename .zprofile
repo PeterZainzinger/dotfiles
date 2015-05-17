@@ -37,4 +37,8 @@ alias pipall="pip install -r Requirements.txt"
 alias home="cd ~"
 POD_LOCAL_HOME=~/PodsLocal
 export POD_LOCAL_HOME
-alias python='python3'
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:~/go/bin
+alias weather="wego 10 vienna"
+export PATH=$PATH:/usr/local/Cellar/node/0.12.1/libexec/npm/lib/node_modules/

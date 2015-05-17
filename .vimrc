@@ -71,6 +71,7 @@ nnoremap <silent> <LEADER>gl  :Glog<CR>
 nnoremap <silent> <LEADER>gb  :Gblame<CR>
 nnoremap <silent> <LEADER>gd  :Gdiff<CR>
 let g:move_key_modifier = 'C'
+nnoremap <silent> <LEADER>vr  :e ~/.vimrc<CR>
 
 " Ack
 noremap <Leader>a :Ack <cword><cr>
