@@ -30,7 +30,7 @@ export PAGER=vimpager
 alias less=$PAGER
 alias zless=$PAGER
 export PATH=/usr/local/bin:$PATH
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 export TERM="screen-256color"
 alias tmux="tmux -2"
 alias pipall="pip install -r Requirements.txt"
@@ -42,3 +42,9 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=$PATH:~/go/bin
 alias weather="wego 10 vienna"
 export PATH=$PATH:/usr/local/Cellar/node/0.12.1/libexec/npm/lib/node_modules/
+alias awconf="vim ~/.config/awesome/rc.lua"
+alias tmux='TERMINFO=/usr/share/terminfo/x/xterm-16color TERM=xterm-16color tmux -2'
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+ 
+# Linux machine
+alias clipmenu="clipmenu -fn \"-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*\""

@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 export PS1="\W \$"
-source ~/.nvm/nvm.sh
+source ~/.zprofile
 
 
 # Set name of the theme to load.

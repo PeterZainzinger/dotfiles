@@ -1,5 +1,7 @@
 syntax enable
 let mapleader = ','			
+
+se t_Co=16
 set cursorline
 set cursorcolumn
 set noswapfile
@@ -18,7 +20,7 @@ filetype plugin on
 "set foldenable          " enable folding
 set nofoldenable    " disable folding
 set showmode
-set clipboard=unnamed
+set clipboard=unnamedplus
 set backspace=indent,eol,start
 set autoindent 
 set hlsearch
@@ -28,23 +30,8 @@ set hlsearch
 " -------------------------------------------------------------------
 
 set background=dark
-colorscheme base16-railscasts
+colorscheme solarized 
 
-"highlight clear SignColumn
-highlight VertSplit    ctermbg=236
-highlight ColorColumn  ctermbg=236
-highlight LineNr       ctermbg=236 
-highlight CursorLineNr ctermbg=236 
-highlight CursorLine   ctermbg=236
-highlight CursorColumn ctermbg=236
-highlight StatusLineNC ctermbg=238 ctermfg=0
-highlight StatusLine   ctermbg=240 ctermfg=12
-highlight IncSearch    ctermbg=3   ctermfg=1
-highlight Search       ctermbg=1   ctermfg=3
-highlight Visual       ctermbg=3   ctermfg=0
-highlight Pmenu        ctermbg=240 ctermfg=12
-highlight PmenuSel     ctermbg=3   ctermfg=1
-highlight SpellBad     ctermbg=0   ctermfg=1
 
 "------------------------------------------------------------------
 "  Custom Key Mappings
