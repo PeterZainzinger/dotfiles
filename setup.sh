@@ -17,6 +17,9 @@ ln -s $Dotfiles/.tmux.conf .tmux.conf
 ln -s $Dotfiles/.zshrc .zshrc
 ln -s $Dotfiles/.zprofile .zprofile
 
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
