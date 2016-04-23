@@ -1,3 +1,5 @@
+export DOCKER_REGISTRY_USERNAME=indoorsdock
+export DOCKER_REGISTRY_PASSWORD=bosscockdock
 export NDK_HOME=/usr/local/Cellar/android-ndk/r10d
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export ANDROID_NDK_HOME=$NDK_HOME
@@ -44,7 +46,19 @@ alias weather="wego 10 vienna"
 export PATH=$PATH:/usr/local/Cellar/node/0.12.1/libexec/npm/lib/node_modules/
 alias awconf="vim ~/.config/awesome/rc.lua"
 alias tmux='TERMINFO=/usr/share/terminfo/x/xterm-16color TERM=xterm-16color tmux -2'
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
  
 # Linux machine
 alias clipmenu="clipmenu -fn \"-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*\""
+export ANDROID_HOME=/usr/local/opt/android-sdk
+alias instantmusic="instantmusic"
+
+alias vim="/usr/local/Cellar/vim/7.4.889/bin/vim"
+alias vi="/usr/local/Cellar/vim/7.4.889/bin/vim"
+
+#alias latexmk="/usr/local/texlive/2015/bin/x86_64-darwin/latexmk"
+alias prefresh='echo "tell application \"Preview\" to activate" | osascript -'
+alias sshconfig="vim ~/.ssh/config"
+export PATH="$PATH:/usr/local/texlive/2015/bin/universal-darwin"
+export GITHUB_API_TOKEN=ef2c3a43a3e5bf3f2a708810a3d5ca14d09cc55b
+export GITHUB_USERNAME=PeterZainzinger
+alias kc="kubectl"

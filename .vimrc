@@ -7,7 +7,9 @@ set cursorcolumn
 set noswapfile
 set number
 set expandtab
+set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set showmatch
 set number
 set modifiable
@@ -18,19 +20,21 @@ set termencoding=utf-8
 set nocompatible
 filetype plugin on
 "set foldenable          " enable folding
-set nofoldenable    " disable folding
+
+
 set showmode
-set clipboard=unnamedplus
+set clipboard=unnamed
 set backspace=indent,eol,start
 set autoindent 
 set hlsearch
+set nofoldenable
 
 " --------------------------------------------------------------------
 "  Theme
 " -------------------------------------------------------------------
 
-set background=dark
-colorscheme solarized 
+set background=light
+colorscheme solarized
 
 
 "------------------------------------------------------------------
@@ -38,7 +42,6 @@ colorscheme solarized
 " --------------------------------------------------------------------
 
 map <C-t> :NERDTreeToggle<CR>
-map <C-u> :TagbarToggle<CR>
 map <D-s> :w
 map <C-f> :CommandT<CR>
 map <C-g> :CommandTJump<CR>
@@ -80,7 +83,9 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 let g:sh_fold_enabled= 0
+
 let g:tex_fold_enabled=0
+
 let Tex_FoldedSections=""
 let Tex_FoldedEnvironments=""
 let Tex_FoldedMisc=""
@@ -109,13 +114,13 @@ let g:pymode_options_max_line_length = 80
 let g:pymode_lint_options_pep8 =
         \ {'max_line_length': g:pymode_options_max_line_length}
 
-let g:pymode_rope = 1
+let g:pymode_rope=0
 let g:pymode_rope_completion_bind = '<C-Space>'
-let g:pymode_rope_completion = 1
-let g:pymode_rope_autoimport = 1
-let g:pymode_rope_autoimport_import_after_complete = 1
-let g:pymode_rope_complete_on_dot = 1
-let g:pymode_rope_autoimport_import_after_complete = 1
+let g:pymode_rope_completion = 0
+let g:pymode_rope_autoimport = 0
+let g:pymode_rope_autoimport_import_after_complete = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_autoimport_import_after_complete = 0
 
 let g:tex_flavor='latex'
 
@@ -169,7 +174,8 @@ Plugin 'ajh17/Spacegray.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-surround.git'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'lepture/vim-jinja'
 
 " --------------------------------------------------------------------
 " Fix my typos 
@@ -189,3 +195,4 @@ autocmd FileType python nnoremap <silent> <LEADER>l :PymodeLint<CR>
 
 " CocoaPods
 "au BufNewFile,BufRead Podfile,*.podspec      set filetype=ruby
+"

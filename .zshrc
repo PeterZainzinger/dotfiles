@@ -1,4 +1,3 @@
-# Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 export PS1="\W \$"
 source ~/.zprofile
@@ -52,7 +51,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/usr/local/go/bin:/usr/texbin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/path/to/compiled/postgresql/bin:/usr/local/Cellar/go/1.2.1/libexec/bin:/Users/peterzainzinger/.rvm/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/usr/local/go/bin:/usr/texbin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/path/to/compiled/postgresql/bin:/usr/local/Cellar/go/1.2.1/libexec/bin:/Users/peterzainzinger/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -81,3 +80,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshrc="vim ~/.zshrc && source ~/.zshrc"
+alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 "
+
+export NVM_DIR="/Users/peterzainzinger/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/go/bin" 
+
+export PATH="$PATH:$HOME/Infra/helm/dm" 
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/peterzainzinger/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/peterzainzinger/google-cloud-sdk/completion.zsh.inc'
+export NODE_PATH=$NODE_PATH:/Users/peterzainzinger/.nvm/versions/node/v5.0.0/lib/node_modules
