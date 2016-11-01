@@ -33,7 +33,7 @@ set nofoldenable
 "  Theme
 " -------------------------------------------------------------------
 
-set background=light
+set background=dark
 colorscheme solarized
 
 
@@ -148,7 +148,6 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'freeo/vim-kalisi'
 Plugin 'tpope/vim-fugitive'
 Plugin 'lervag/vim-latex'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'groenewege/vim-less'
 Plugin 'ryanss/vim-hackernews'
 Plugin 'edkolev/tmuxline.vim'
@@ -176,7 +175,8 @@ Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-surround.git'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'lepture/vim-jinja'
-
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " --------------------------------------------------------------------
 " Fix my typos 
 " --------------------------------------------------------------------

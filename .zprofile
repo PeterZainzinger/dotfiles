@@ -13,8 +13,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF
 alias vimrc='vim ~/.vimrc'
-alias tmuxconf='vim ~/.tmux.conf && tmux source-file ~/.tmux.conf && echo updated tmux config' 
-alias zprofile='vim ~/.zprofile && source ~/.zprofile && echo updated zprofile'
+alias nvimrc='nvim ~/.nvimrc'
+alias tmuxconf='nvim ~/.tmux.conf && tmux source-file ~/.tmux.conf && echo updated tmux config' 
+alias zprofile='nvim ~/.zprofile && source ~/.zprofile && echo updated zprofile'
 alias cdir='pwd|pbcopy'
 alias vimplugin='vimrc && vim +PluginInstall'
 alias c='clear'
@@ -28,9 +29,6 @@ alias gd='git diff'
 alias ga='git add -A'
 alias compmath='ssh e1326835@lva.student.tuwien.ac.at'
 alias netconfig='ifconfig|less'
-export PAGER=vimpager
-alias less=$PAGER
-alias zless=$PAGER
 export PATH=/usr/local/bin:$PATH
 #source /usr/local/bin/virtualenvwrapper.sh
 export TERM="screen-256color"
@@ -57,8 +55,23 @@ alias vi="/usr/local/Cellar/vim/7.4.889/bin/vim"
 
 #alias latexmk="/usr/local/texlive/2015/bin/x86_64-darwin/latexmk"
 alias prefresh='echo "tell application \"Preview\" to activate" | osascript -'
-alias sshconfig="vim ~/.ssh/config"
+alias sshconfig="nvim ~/.ssh/config"
 export PATH="$PATH:/usr/local/texlive/2015/bin/universal-darwin"
 export GITHUB_API_TOKEN=ef2c3a43a3e5bf3f2a708810a3d5ca14d09cc55b
 export GITHUB_USERNAME=PeterZainzinger
 alias kc="kubectl"
+
+encodeb64() {
+   echo -n "$1" | base64 
+}
+alias encode64=encodeb64
+
+decodeb64() {
+   echo -n "$1" | base64 --decode
+}
+alias decode64=decodeb64
+
+cencodeb64() {
+   echo -n "$1" | base64 | pbcopy
+}
+alias cencode64=cencodeb64
