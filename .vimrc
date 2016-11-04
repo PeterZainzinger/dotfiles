@@ -14,9 +14,7 @@ set showmatch
 set number
 set modifiable
 set splitright
-set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
-set termencoding=utf-8
 set nocompatible
 filetype plugin on
 "set foldenable          " enable folding
@@ -34,7 +32,7 @@ set nofoldenable
 " -------------------------------------------------------------------
 
 set background=dark
-colorscheme solarized
+colorscheme nova
 
 
 "------------------------------------------------------------------
@@ -137,46 +135,24 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call pathogen#infect()
 
-Plugin 'bling/vim-airline'
-Plugin 'itchyny/lightline.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-dispatch'
-Plugin 'klen/python-mode'
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'freeo/vim-kalisi'
 Plugin 'tpope/vim-fugitive'
-Plugin 'lervag/vim-latex'
-Plugin 'groenewege/vim-less'
-Plugin 'ryanss/vim-hackernews'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'aklt/plantuml-syntax'
-Plugin 'majutsushi/tagbar'
-Plugin 'joonty/vdebug'
-Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ctrlp.vim'   
-Plugin 'vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim.git'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-repeat'
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'matze/vim-move'
-Plugin 'ajh17/Spacegray.vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-surround.git'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'lepture/vim-jinja'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'trevordmiller/nova-vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+
 " --------------------------------------------------------------------
 " Fix my typos 
 " --------------------------------------------------------------------

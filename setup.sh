@@ -14,6 +14,7 @@ ln -s $Dotfiles/.vimrc .vimrc
 ln -sr  $Dotfiles/.vim .vim
 ln -s $Dotfiles/.gitconfig .gitconfig
 ln -s $Dotfiles/.tmux.conf .tmux.conf
+ln -s $Dotfiles/.tmux.conf.local .tmux.conf.local
 ln -s $Dotfiles/.zshrc .zshrc
 ln -s $Dotfiles/.zprofile .zprofile
 
