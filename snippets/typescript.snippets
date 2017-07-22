@@ -1,0 +1,37 @@
+snippet ngImport "Basic Import"
+import {Component} from '@angular/core';
+endsnippet
+
+snippet ngComponent "Angular Component"
+@Component({
+  selector: "${1:Selector}",
+   MdIcon: `<div></div>`,
+})
+export class Class {
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
+}
+endsnippet
+
+snippet ngPipe "Pipe"
+@Pipe({name: '${1: pipeName}'})
+export class CoolPipe implements PipeTransform {
+  transform(value:any): number {
+	return value;
+  }
+}
+endsnippet
+
+
+snippet tslintEnable "TS Lint enable"
+/* tslint:enable*/
+endsnippet
+
+snippet tslintDisable "TS Lint disable"
+/* tslint:disable*/
+endsnippet

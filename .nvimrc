@@ -30,8 +30,11 @@ set nofoldenable
 "  Theme
 " -------------------------------------------
 
-set background=dark
-colorscheme nova
+"set background=dark
+"colorscheme nova
+
+set background=light
+colorscheme solarized
 
 " -------------------------------------------
 "  Plugin
@@ -40,7 +43,7 @@ colorscheme nova
 call plug#begin('~/.config/nvim/plugged')
 
 " General Purpose
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlp.vim'   
 Plug 'scrooloose/nerdcommenter'
@@ -57,6 +60,9 @@ Plug 'Shougo/vimproc'
 " Language Plugins
 Plug 'tarrant/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
+"Plug 'alx741/vim-hindent'
+Plug 'sbdchd/neoformat'
+
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'leafgarland/typescript-vim'
@@ -66,14 +72,15 @@ Plug 'posva/vim-vue'
 Plug 'elixir-lang/vim-elixir'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'cespare/vim-toml'
+Plug 'jalvesaq/Nvim-R'
 
  "Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 " Deoplete
 Plug 'Shougo/deoplete.nvim'
-Plug 'mhartington/deoplete-typescript'
+"Plug 'mhartington/deoplete-typescript'
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'zchee/deoplete-jedi'
 Plug 'eagletmt/neco-ghc'
@@ -81,6 +88,7 @@ Plug 'slashmili/alchemist.vim'
 
 " Esoteric
 Plug 'yuratomo/w3m.vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -91,10 +99,16 @@ set runtimepath+=~/.config/nvim/cache/deoplete.nvim/
 "call deoplete#enable()
 "set runtimepath+=~/.vim/snippets/
 
-"let g:deoplete#sources#typescript = ['tsc','buffer', 'file', 'ultisnips']
-"let g:deoplete#sources#html       = ['buffer', 'file', 'ultisnips']
-let g:deoplete#sources={}
-let g:deoplete#sources._=['buffer', 'file', 'ultisnips']
+"Snippet
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir="~/dotfiles/snippets"
+"let g:UltiSnipsSnippetDirectories=["~/dotfiles/snippets"]
+let g:UltiSnipsUsePythonVersion = 3
+
+let g:deoplete#sources#typescript = ['tsc','buffer', 'file', 'ultisnips']
+let g:deoplete#sources#html       = ['buffer', 'file', 'ultisnips']
+"let g:deoplete#sources={}
+"let g:deoplete#sources._=['buffer', 'file', 'ultisnips']
 
 let g:NERDTreeDirArrows=0
 let NERDTreeIgnore = ['\.pyc$','__pycache__']
@@ -111,9 +125,11 @@ let g:syntastic_html_checkers=['']
 let g:syntastic_html_tidy_ignore_errors=[
     \'proprietary attribute "ng-',
 \]
-" Disable haskell-vim omnifunc
 let g:syntastic_html_tidy_ignore_errors=[]
 let g:syntastic_quiet_messages = {"regex": 'is unstable and should only be used on the nightly compiler, but it is currently accepted for backwards compatibility; this will soon change, see issue #31847 for more details'}
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 let g:rustfmt_fail_silently = 0
 let g:neomake_rust_enabled_makers = ['cargo']
@@ -129,15 +145,13 @@ let g:deoplete#sources#rust#racer_binary='/Users/peterzainzinger/.cargo/bin/race
 let g:deoplete#sources#rust#rust_source_path='/Users/peterzainzinger/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 
 " Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-let g:deoplete#sources#haskell = ['ghc']
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+"let g:haskellmode_completion_ghc = 0
+"let g:deoplete#sources#haskell = ['ghc','ultisnips']
+"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-" Neomake configuration.
-augroup my_neomake_cmds
-    autocmd!
-    " Have neomake run cargo when Rust files are saved.
-    autocmd BufWritePost *.rs Neomake! cargo
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.hs undojoin | Neoformat
 augroup END
 
 let g:syntastic_enable_elixir_checker = 1
@@ -147,6 +161,7 @@ let g:syntastic_elixir_checkers=['elixir']
 " -------------------------------------------
 " Key Bindings
 " -------------------------------------------
+
 noremap <Leader>q :q! <CR>
 noremap <Leader>s :w <Enter>
 noremap <Leader>l :Neomake <Enter>
@@ -166,6 +181,9 @@ autocmd FileType jsx noremap <buffer> <Leader>f :call JsxBeautify()<cr>
 autocmd FileType html noremap <buffer> <Leader>f :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <Leader>f :call CSSBeautify()<cr>
 
+"autocmd BufWritePost *.tex :call NeomakeSh make build
+
+autocmd! BufWritePost *.tex NeomakeSh make build
 
 noremap <Leader>bec c<c-r>=system('base64 ', @")<cr><esc>
 noremap <Leader>bdc c<c-r>=system('base64 --decode', @")<cr><esc>
@@ -182,9 +200,24 @@ filetype plugin on
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 if has('nvim')
   nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 endif
+
+au BufReadPost Jenkinsfile set syntax=groovy
+au BufReadPost Jenkinsfile set filetype=groovy
+
+" -------------------------------------------
+" Spelling 
+" -------------------------------------------
+
+command Spellgerman execute ":setlocal spell spelllang=de_de"
+
+let g:neoformat_haskell_hindent = {
+            \ 'exe': 'hindent',
+            \ 'args': ['--style johan-tibell','--line-length 80'],
+            \ 'stdin' : 1,
+            \ }
+
+let g:neoformat_enabled_haskell = ['hindent']
