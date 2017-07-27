@@ -52,6 +52,8 @@ Plug 'sbdchd/neoformat'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'jalvesaq/Nvim-R'
+Plug 'leafgarland/typescript-vim'
+Plug 'mhartington/nvim-typescript'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'eagletmt/neco-ghc'
