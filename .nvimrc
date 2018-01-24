@@ -45,6 +45,10 @@ Plug 'Numkil/ag.nvim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc'
+Plug 'gcmt/taboo.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'neomake/neomake'
+
 
 " Language Plugins
 Plug 'neovimhaskell/haskell-vim'
@@ -54,6 +58,11 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript'
+Plug 'mattn/emmet-vim'
+Plug 'stephpy/vim-yaml'
+Plug 'posva/vim-vue'
+Plug 'adimit/prolog.vim'
+
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'eagletmt/neco-ghc'
@@ -71,7 +80,9 @@ call plug#end()
 " -------------------------------------------
 
 set background=dark
-colorscheme gruvbox
+"colorscheme gruvbox
+"set background=light
+colorscheme solarized
 hi vertsplit ctermfg=238 ctermbg=235
 hi LineNr ctermfg=237
 hi StatusLine ctermfg=235 ctermbg=245
@@ -107,18 +118,22 @@ augroup fmt
   autocmd BufWritePre *.hs undojoin | Neoformat
 augroup END
 
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git|vagrant|lib'
+
+
+
 " -------------------------------------------
 " Key Bindings
 " -------------------------------------------
 
-noremap <Leader>q :q! <CR>
+noremap <Leader>q :q <CR>
 noremap <Leader>s :w <Enter>
 noremap <Leader>l :Neomake <Enter>
 
 map <C-t> :NERDTreeToggle<CR>
 
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+"inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+"inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 
 autocmd BufRead,BufNewFile *.yml set filetype=ansible
@@ -132,6 +147,8 @@ autocmd FileType json noremap <buffer> <Leader>f :call JsonBeautify()<cr>
 autocmd FileType jsx noremap <buffer> <Leader>f :call JsxBeautify()<cr>
 autocmd FileType html noremap <buffer> <Leader>f :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <Leader>f :call CSSBeautify()<cr>
+autocmd FileType scss noremap <buffer> <Leader>f :call CSSBeautify()<cr>
+autocmd FileType sass noremap <buffer> <Leader>f :call CSSBeautify()<cr>
 
 autocmd! BufWritePost *.tex NeomakeSh make build
 
@@ -141,6 +158,10 @@ endif
 
 au BufReadPost Jenkinsfile set syntax=groovy
 au BufReadPost Jenkinsfile set filetype=groovy
+
+
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 
 " -------------------------------------------
 " Spelling 
