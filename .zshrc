@@ -87,13 +87,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF
 
-alias nvimrc='nvim ~/dotfiles/.nvimrc'
-
-alias c='clear'
-alias o='open'
-alias gc='git commit'
-alias gd='git diff'
-alias ga='git add -A'
+source ~/.zshalias
 
 encodeb64() {
    echo -n "$1" | base64 

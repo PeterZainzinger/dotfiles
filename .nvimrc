@@ -23,7 +23,7 @@ set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set nocompatible
 set showmode
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set backspace=indent,eol,start
 set autoindent 
 set hlsearch
