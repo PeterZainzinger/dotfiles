@@ -58,7 +58,6 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript'
-Plug 'mattn/emmet-vim'
 Plug 'stephpy/vim-yaml'
 Plug 'posva/vim-vue'
 Plug 'adimit/prolog.vim'
@@ -160,7 +159,6 @@ au BufReadPost Jenkinsfile set syntax=groovy
 au BufReadPost Jenkinsfile set filetype=groovy
 
 
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
 " -------------------------------------------
