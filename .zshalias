@@ -7,5 +7,6 @@ alias gd='git diff'
 alias ga='git add -A'
 
 alias spotify="spotify --force-device-scale-factor=1.8"
+alias idea="/opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
 
 

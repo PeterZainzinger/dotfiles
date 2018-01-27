@@ -19,6 +19,7 @@ local lain          = require("lain")
 local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+
 -- }}}
 
 -- {{{ Error handling
@@ -382,8 +383,8 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Dropdown application
-    awful.key({ modkey, }, "z", function () awful.screen.focused().quake:toggle() end,
-              {description = "dropdown application", group = "launcher"}),
+    --awful.key({ modkey, }, "z", function () awful.screen.focused().quake:toggle() end,
+              --{description = "dropdown application", group = "launcher"}),
 
     -- Widgets popups
     awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end,
@@ -392,42 +393,69 @@ globalkeys = gears.table.join(
               {description = "show weather", group = "widgets"}),
 
     -- Brightness
-    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 10") end,
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("light -A 10") end,
               {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 10") end,
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("light -U 10") end,
               {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
-    awful.key({ altkey }, "Up",
+    awful.key({  }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 5%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume up", group = "hotkeys"}),
-    awful.key({ altkey }, "Down",
+
+    awful.key({        }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 5%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "volume down", group = "hotkeys"}),
-    awful.key({ altkey }, "m",
+
+    awful.key({ }, "XF86AudioMute",
         function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+            os.execute(string.format("amixer -D pulse set Master 1+ toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
             beautiful.volume.update()
         end,
         {description = "toggle mute", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "m",
+
+    --awful.key({ altkey, "Control" }, "m",
+        --function ()
+            --os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
+            --beautiful.volume.update()
+        --end,
+        --{description = "volume 100%", group = "hotkeys"}),
+
+    --awful.key({ altkey, "Control" }, "0",
+        --function ()
+            --os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
+            --beautiful.volume.update()
+        --end,
+        --{description = "volume 0%", group = "hotkeys"}),
+
+    awful.key({ }, "XF86AudioPlay",
         function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
-            beautiful.volume.update()
+            os.execute("playerctl play-pause")
         end,
-        {description = "volume 100%", group = "hotkeys"}),
-    awful.key({ altkey, "Control" }, "0",
+        {description = "toggle player/pause", group = "hotkeys"}),
+
+    awful.key({ }, "XF86AudioPrev",
         function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
-            beautiful.volume.update()
+            os.execute("playerctl previous")
         end,
-        {description = "volume 0%", group = "hotkeys"}),
+        {description = "player prev", group = "hotkeys"}),
+
+    awful.key({ }, "XF86AudioNext",
+        function ()
+            os.execute("playerctl next")
+        end,
+        {description = "player next", group = "hotkeys"}),
+
+
+
+
+
 
     -- MPD control
     awful.key({ altkey, "Control" }, "Up",
