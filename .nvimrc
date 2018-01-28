@@ -61,6 +61,7 @@ Plug 'mhartington/nvim-typescript'
 Plug 'stephpy/vim-yaml'
 Plug 'posva/vim-vue'
 Plug 'adimit/prolog.vim'
+Plug 'udalov/kotlin-vim'
 
 
 Plug 'Shougo/deoplete.nvim'

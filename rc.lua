@@ -91,6 +91,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
     --awful.layout.suit.floating,
     --awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
@@ -513,7 +514,10 @@ globalkeys = gears.table.join(
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
-    --
+
+    awful.key({ modkey }, "o", function() awful.client.movetoscreen() end, 
+              {description = "move to screen", group = "launcher"}),
+ 
     -- dmenu
     awful.key({ modkey }, "x", function ()
         awful.spawn(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
@@ -661,8 +665,8 @@ awful.rules.rules = {
       properties = { titlebars_enabled = false} },
 
     -- Set Firefox to always map on the first tag on screen 1.
-    --{ rule = { class = "Firefox" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1] } },
+    { rule = { class = "chromium-browser" },
+      properties = { floating = false,maximized = false }},
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized = true } },
