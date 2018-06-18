@@ -8,6 +8,8 @@ alias ga='git add -A'
 
 alias spotify="spotify --force-device-scale-factor=1.8"
 alias idea="/opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
+alias suidea="sudo /opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
+alias androidstudio="/opt/android-studio/bin/studio.sh"
 
 alias display-home="xrandr --output eDP-1-1 --auto --right-of DP-1-1"
 alias redshift-start="systemctl --user restart redshift"

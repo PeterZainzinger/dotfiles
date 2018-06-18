@@ -48,6 +48,8 @@ Plug 'Shougo/vimproc'
 Plug 'gcmt/taboo.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 
 " Language Plugins
@@ -62,6 +64,8 @@ Plug 'stephpy/vim-yaml'
 Plug 'posva/vim-vue'
 Plug 'adimit/prolog.vim'
 Plug 'udalov/kotlin-vim'
+Plug 'dart-lang/dart-vim-plugin'
+
 
 
 Plug 'Shougo/deoplete.nvim'
@@ -80,8 +84,8 @@ call plug#end()
 " -------------------------------------------
 
 set background=dark
-"colorscheme gruvbox
 "set background=light
+"colorscheme gruvbox
 colorscheme solarized
 hi vertsplit ctermfg=238 ctermbg=235
 hi LineNr ctermfg=237
@@ -175,3 +179,15 @@ let g:neoformat_haskell_hindent = {
             \ }
 
 let g:neoformat_enabled_haskell = ['hindent']
+
+" -------------------------------------------
+"  Snippets
+" -------------------------------------------
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"

@@ -5,6 +5,7 @@ map <C-L> <C-W>l
 
 let mapleader = ","
 
-nnoremap <silent> <Leader>f :action ReformatCode<CR>
 nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>r :action RefactoringMenu<CR>
+nnoremap <silent> <Leader>f :action ReformatCode<CR>
+nnoremap <silent> <Leader>d :action Flutter.Toolbar.ReloadAction<CR>
