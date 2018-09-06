@@ -11,7 +11,12 @@ alias idea="/opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
 alias suidea="sudo /opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
 alias androidstudio="/opt/android-studio/bin/studio.sh"
 
-alias display-home="xrandr --output eDP-1-1 --auto --right-of DP-1-1"
+alias display-home="xrandr --output eDP-1 --auto --right-of DP-1"
+alias display-dock="xrandr --output eDP-1 --auto --right-of DP-1-2"
 alias redshift-start="systemctl --user restart redshift"
+alias system-settings="XDG_CURRENT_DESKTOP=Unity7 unity-control-center"
 
-
+#xinput --set-prop "Logitech M510" "Coordinate Transformation Matrix" 6.000000, 0.000000, 0.000000, 0.000000, 6.000000, 0.000000, 0.000000, 0.000000, 1.000000
+#mouse_speed() {
+   # xinput --set-prop "Logitech M510" "Coordinate Transformation Matrix" $1, 0.000000, 0.000000, 0.000000, $1, 0.000000, 0.000000, 0.000000, 1.000000
+#}

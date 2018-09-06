@@ -9,3 +9,10 @@ nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>r :action RefactoringMenu<CR>
 nnoremap <silent> <Leader>f :action ReformatCode<CR>
 nnoremap <silent> <Leader>d :action Flutter.Toolbar.ReloadAction<CR>
+nnoremap <silent> <Leader>n :action NewFile<CR>
+nnoremap <silent> <Leader>n :action NewFile<CR>
+nnoremap <silent> <Leader>r :action Run<CR>
+"nnoremap <silent> <Leader>d :action Debug<CR>
+
+
+nnoremap <silent> <Leader>y :action Rerun<CR>
