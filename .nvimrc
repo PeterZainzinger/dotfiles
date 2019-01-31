@@ -23,7 +23,7 @@ set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set nocompatible
 set showmode
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set backspace=indent,eol,start
 set autoindent 
 set hlsearch
@@ -48,8 +48,8 @@ Plug 'Shougo/vimproc'
 Plug 'gcmt/taboo.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 
 " Language Plugins
@@ -65,6 +65,7 @@ Plug 'posva/vim-vue'
 Plug 'adimit/prolog.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'ekalinin/Dockerfile.vim'
 
 
 
@@ -191,3 +192,13 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" fastlane
+
+au BufNewFile,BufRead Appfile set ft=ruby
+au BufNewFile,BufRead Deliverfile set ft=ruby
+au BufNewFile,BufRead Fastfile set ft=ruby
+au BufNewFile,BufRead Gymfile set ft=ruby
+au BufNewFile,BufRead Matchfile set ft=ruby
+au BufNewFile,BufRead Snapfile set ft=ruby
+au BufNewFile,BufRead Scanfile set ft=ruby

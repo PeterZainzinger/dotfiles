@@ -7,14 +7,22 @@ alias gd='git diff'
 alias ga='git add -A'
 
 alias spotify="spotify --force-device-scale-factor=1.8"
-alias idea="/opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
+alias idea="/opt/jetbrains-toolbox"
 alias suidea="sudo /opt/idea/idea/idea-IU-173.4301.25/bin/idea.sh"
 alias androidstudio="/opt/android-studio/bin/studio.sh"
 
 alias display-home="xrandr --output eDP-1 --auto --right-of DP-1"
 alias display-dock="xrandr --output eDP-1 --auto --right-of DP-1-2"
+
 alias redshift-start="systemctl --user restart redshift"
 alias system-settings="XDG_CURRENT_DESKTOP=Unity7 unity-control-center"
+
+alias wifi-home-a1="nmcli c up uuid 7b2be602-cda1-428c-b9f3-cb50b4a161a0"
+alias wifi-home-a1-24="nmcli c up uuid 3d105c25-35b2-4878-81ae-35de0bd9109f"
+alias wifi-home-fritz="nmcli c up uuid 14f06101-84d6-4e1a-8e1d-9e0e7071e214"
+alias wifi-android-ap="nmcli c up uuid 00dab389-0065-4f24-ac59-30dee30780ae"
+alias wifi-home-ceuse="nmcli c up uuid 2056407f-e3e7-419c-9c36-6625f8fb155f"
+ 
 
 #xinput --set-prop "Logitech M510" "Coordinate Transformation Matrix" 6.000000, 0.000000, 0.000000, 0.000000, 6.000000, 0.000000, 0.000000, 0.000000, 1.000000
 #mouse_speed() {
