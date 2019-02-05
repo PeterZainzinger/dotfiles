@@ -83,6 +83,8 @@ local browser      = "firefox"
 local guieditor    = "atom"
 local scrlocker    = "xlock"
 
+awful.screen.set_auto_dpi_enabled(true)
+
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
 awful.layout.layouts = {
@@ -190,7 +192,7 @@ local myawesomemenu = {
     { "quit", function() awesome.quit() end }
 }
 awful.util.mymainmenu = freedesktop.menu.build({
-    icon_size = beautiful.menu_height or 16,
+    icon_size = beautiful.menu_height or 32,
     before = {
         { "Awesome", myawesomemenu, beautiful.awesome_icon },
         -- other triads can be put here

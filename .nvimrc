@@ -69,11 +69,12 @@ Plug 'ekalinin/Dockerfile.vim'
 
 
 
-Plug 'Shougo/deoplete.nvim'
+"Plug 'Shougo/deoplete.nvim'
 Plug 'eagletmt/neco-ghc'
 
 " Themes 
 Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 
 
 call plug#end()
