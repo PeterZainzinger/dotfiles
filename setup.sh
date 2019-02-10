@@ -26,6 +26,7 @@ ln -s $Dotfiles/.xsessionrc .xsessionrc
 ln -s $Dotfiles/awesome_theme .config/awesome/themes/rainbow
 ln -s $Dotfiles/.ideavimrc .ideavimrc
 sudo ln -sf $Dotfiles/xorg.conf /etc/X11/xorg.conf
+sudo ln -sf ../../..$Dotfiles/monitor-plug.sh /usr/local/bin/monitor-hotplug.sh
 
 cp $Dotfiles/xscreensaver.service .config/systemd/user/xscreensaver.service
 systemctl --user enable xscreensaver

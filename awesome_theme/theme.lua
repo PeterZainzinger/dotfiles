@@ -18,7 +18,7 @@ local theme                                     = {}
 theme.default_dir                               = require("awful.util").get_themes_dir() .. "default"
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/rainbow"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Misc Tamsyn 10.5"
+theme.font                                      = "Misc Tamsyn 12.5"
 theme.fg_normal                                 = "#9E9E9E"
 theme.fg_focus                                  = "#EBEBFF"
 theme.bg_normal                                 = "#242424"
@@ -89,115 +89,24 @@ local white  = theme.fg_focus
 local gray   = theme.fg_normal
 
 -- Textclock
-local mytextclock = wibox.widget.textclock(markup(white, " %H:%M "))
-mytextclock.font = theme.font
+local mytextclock = wibox.widget.textclock(markup(white, "%H\n :\n%M"))
+mytextclock.font =  theme.font
 
--- Calendar
-theme.cal = lain.widget.cal({
-    attach_to = { mytextclock },
-    notification_preset = {
-        font = "Misc Tamsyn 11",
-        fg   = white,
-        bg   = theme.bg_normal
-    }
-})
 
--- Mail IMAP check
---[[ commented because it needs to be set before use
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
+-- Battery
+local bat = lain.widget.bat({
     settings = function()
-        mail_notification_preset.fg = white
+        local perc = bat_now.perc ~= "N/A" and bat_now.perc .. "%" or bat_now.perc
 
-        mail  = ""
-        count = ""
-
-        if mailcount > 0 then
-            mail = "Mail "
-            count = mailcount .. " "
+        if bat_now.ac_status == 1 then
+            perc = perc .. " plug"
         end
 
-        widget:set_markup(markup.font(theme.font, markup(gray, mail) .. markup(white, count)))
-    end
-})
---]]
-
--- MPD
-theme.mpd = lain.widget.mpd({
-    settings = function()
-        mpd_notification_preset.fg = white
-
-        artist = mpd_now.artist .. " "
-        title  = mpd_now.title  .. " "
-
-        if mpd_now.state == "pause" then
-            artist = "mpd "
-            title  = "paused "
-        elseif mpd_now.state == "stop" then
-            artist = ""
-            title  = ""
-        end
-
-        widget:set_markup(markup.font(theme.font, markup(gray, artist) .. markup(white, title)))
+        widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, perc .. " "))
     end
 })
 
--- /home fs
---[[ commented because it needs Gio/Glib >= 2.54
-theme.fs = lain.widget.fs({
-    notification_preset = { fg = white, bg = theme.bg_normal, font = "Misc Tamsyn 10.5" },
-    settings  = function()
-        local fs_header, fs_p = "", ""
 
-        if fs_now["/home"].percentage >= 90 then
-            fs_header = " Hdd "
-            fs_p      = fs_now["/home"].percentage
-        end
-
-        widget:set_markup(markup.font(theme.font, markup(gray, fs_header) .. markup(white, fs_p)))
-    end
-})
---]]
-
--- ALSA volume bar
-theme.volume = lain.widget.alsabar({
-    ticks = true, width = 67,
-    notification_preset = { font = theme.font }
-})
-theme.volume.tooltip.wibox.fg = theme.fg_focus
-theme.volume.tooltip.wibox.font = theme.font
-theme.volume.bar:buttons(my_table.join (
-          awful.button({}, 1, function()
-            awful.spawn(string.format("%s -e alsamixer", terminal))
-          end),
-          awful.button({}, 2, function()
-            os.execute(string.format("%s set %s 100%%", theme.volume.cmd, theme.volume.channel))
-            theme.volume.update()
-          end),
-          awful.button({}, 3, function()
-            os.execute(string.format("%s set %s toggle", theme.volume.cmd, theme.volume.togglechannel or theme.volume.channel))
-            theme.volume.update()
-          end),
-          awful.button({}, 4, function()
-            os.execute(string.format("%s set %s 1%%+", theme.volume.cmd, theme.volume.channel))
-            theme.volume.update()
-          end),
-          awful.button({}, 5, function()
-            os.execute(string.format("%s set %s 1%%-", theme.volume.cmd, theme.volume.channel))
-            theme.volume.update()
-          end)
-))
-local volumebg = wibox.container.background(theme.volume.bar, "#585858", gears.shape.rectangle)
-local volumewidget = wibox.container.margin(volumebg, 7, 7, 5, 5)
-
--- Weather
-theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
-    notification_preset = { font = theme.font, fg = white }
-})
 
 -- Separators
 local first = wibox.widget.textbox(markup.font("Misc Tamsyn 4", " "))
@@ -238,39 +147,29 @@ function theme.at_screen_connect(s)
                            awful.button({}, 5, function() awful.layout.inc(-1) end)))
 
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
-
-    -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+    s.mytaglist = awful.widget.taglist(
+      {
+        screen      = s, 
+        filter      = awful.widget.taglist.filter.all, 
+        buttons     = awful.util.taglist_buttons,
+        layout   = {
+          spacing = 12,
+          layout  = wibox.layout.fixed.vertical
+        },
+      })
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 42, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ 
+      position = "left", orientation="north", screen = s,  
+      width = 60, bg = theme.bg_normal, fg = theme.fg_normal })
 
-    -- Add widgets to the wibox
-    s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            first,
-            s.mytaglist,
-            spr,
-            s.mytxtlayoutbox,
-            --spr,
-            s.mypromptbox,
-            spr,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
-            spr,
-            --theme.mpd.widget,
-            --theme.mail.widget,
-            --theme.fs.widget,
-            --volumewidget,
-            mytextclock,
-        },
-    }
-end
+    local systray = wibox.widget.systray()
+    systray:set_horizontal(false)
+
+    local align = wibox.layout.align.vertical(s.mytaglist,systray, mytextclock)
+    align:set_expand("outside")
+    s.mywibox:set_widget(align)
+    
+    end
 
 return theme
