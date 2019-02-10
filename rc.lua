@@ -81,7 +81,7 @@ local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
 local browser      = "firefox"
 local guieditor    = "atom"
-local scrlocker    = "xlock"
+local scrlocker    = "xscreensaver-command -lock"
 
 awful.screen.set_auto_dpi_enabled(true)
 
@@ -238,7 +238,8 @@ globalkeys = gears.table.join(
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+    --
+    awful.key({ modkey, "Shift"   }, "z", function () os.execute(scrlocker) end,
               {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
@@ -767,3 +768,7 @@ client.connect_signal("focus", border_adjust)
 client.connect_signal("property::maximized", border_adjust)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+run_once({"nm-applet"})
+run_once({"redshift-gtk"}) 

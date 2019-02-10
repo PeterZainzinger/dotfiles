@@ -1,0 +1,17 @@
+-) systemd service
+  * redshift
+  * xscreensaver
+  * nm-applet
+  * awesomw wm 
+
+-) rc.lua
+  * cleanup
+  * remove unused stuff
+  * shortcut for chrome
+  * topbar -> sidebar
+
+-) hotplug monitors
+-) mount nas
+-) backup setup
+-) download server ssh keys
+-) private git server nas?

@@ -12,6 +12,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applicat
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zlogin
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -35,5 +36,5 @@ alias decode64=decodeb64
 
 prompt_context() {}
 
-
-
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
