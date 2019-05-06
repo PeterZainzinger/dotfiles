@@ -71,15 +71,22 @@ local scrlocker    = "xscreensaver-command -lock"
 awful.screen.set_auto_dpi_enabled(true)
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4", "5" }
+awful.util.tagnames = {  }
+
 awful.layout.layouts = {
     awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.bottom,
 }
+
+awful.screen.connect_for_each_screen(function(s)
+    if s.geometry.width >= s.geometry.height then
+      awful.tag({ "1", "2", "3", "4", "5"  }, s, awful.layout.layouts[1])
+    else
+      awful.tag({ "1", "2", "3", "4", "5"  }, s, awful.layout.layouts[2])
+    end
+  end)
+
+
 
 awful.util.taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end)                
@@ -193,6 +200,17 @@ globalkeys = gears.table.join(
             end
         end,
         {description = "go back", group = "client"}),
+  -- Dynamic tagging
+    awful.key({ modkey, "Shift" }, "n", function () lain.util.add_tag() end,
+              {description = "add new tag", group = "tag"}),
+    awful.key({ modkey, "Shift" }, "r", function () lain.util.rename_tag() end,
+              {description = "rename tag", group = "tag"}),
+    awful.key({ modkey, "Shift" }, "Left", function () lain.util.move_tag(-1) end,
+              {description = "move tag to the left", group = "tag"}),
+    awful.key({ modkey, "Shift" }, "Right", function () lain.util.move_tag(1) end,
+              {description = "move tag to the right", group = "tag"}),
+    awful.key({ modkey, "Shift" }, "d", function () lain.util.delete_tag() end,
+              {description = "delete tag", group = "tag"}),
 
     -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
@@ -292,7 +310,25 @@ globalkeys = gears.table.join(
         {description = "player next", group = "hotkeys"}),
 
 
+    awful.key({ modkey, "Mod1"    }, "Left",     
+        function () 
+          awful.tag.incmwfact( 0.01)    
+        end),
 
+    awful.key({ modkey, "Mod1"    }, "Right",    
+        function () 
+          awful.tag.incmwfact(-0.01)  
+        end),
+
+    awful.key({ modkey, "Mod1"    }, "Down",     
+        function () 
+          awful.client.incwfact( 0.01)    
+        end),
+
+    awful.key({ modkey, "Mod1"    }, "Up",     
+        function () 
+          awful.client.incwfact(-0.01)    
+        end),
 
 
 

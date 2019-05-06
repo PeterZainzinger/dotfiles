@@ -12,6 +12,7 @@ nnoremap <silent> <Leader>d :action Flutter.Toolbar.ReloadAction<CR>
 nnoremap <silent> <Leader>n :action NewFile<CR>
 nnoremap <silent> <Leader>n :action NewFile<CR>
 nnoremap <silent> <Leader>r :action Run<CR>
+nnoremap <silent> <Leader>c :action CommentByLineComment<CR>
 "nnoremap <silent> <Leader>d :action Debug<CR>
 
 

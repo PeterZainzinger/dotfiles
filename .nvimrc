@@ -58,7 +58,7 @@ Plug 'sbdchd/neoformat'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'jalvesaq/Nvim-R'
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript'
 Plug 'stephpy/vim-yaml'
 Plug 'posva/vim-vue'
@@ -85,8 +85,8 @@ call plug#end()
 "  Theme
 " -------------------------------------------
 
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 "colorscheme gruvbox
 colorscheme solarized
 hi vertsplit ctermfg=238 ctermbg=235
