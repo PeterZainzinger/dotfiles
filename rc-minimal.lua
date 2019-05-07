@@ -51,7 +51,7 @@ beautiful.notification_font = "Noto Sans Bold 14"
 browser = "exo-open --launch WebBrowser" or "firefox"
 filemanager = "exo-open --launch FileManager" or "thunar"
 gui_editor = "mousepad"
-terminal = os.getenv("TERMINAL") or "lxterminal"
+terminal = "gnome-terminal --zoom=1.3"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -63,7 +63,7 @@ modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
-    --awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
@@ -205,7 +205,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[3])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -305,41 +305,101 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "t", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey,           }, "z", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
-
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)                 end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)                 end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true)        end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true)        end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)           end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)           end,
-              {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey     }, "b", function () awful.spawn(browser)          end,
+    awful.key({ modkey     }, "q", function () awful.spawn(browser)          end,
               {description = "launch Browser", group = "launcher"}),
-    awful.key({ modkey, "Control"}, "Escape", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
-              {description = "launch rofi", group = "launcher"}),
-    awful.key({ modkey,           }, "e", function () awful.spawn("/usr/bin/thunar")            end,
-              {description = "launch filemanager", group = "launcher"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                       end,
-              {description = "select previous", group = "layout"}),
-    awful.key({                   }, "Print", function () awful.spawn("/usr/bin/i3-scrot -d")   end,
-              {description = "capture a screenshot", group = "screenshot"}),
-    awful.key({"Control"          }, "Print", function () awful.spawn("/usr/bin/i3-scrot -w")   end,
-              {description = "capture a screenshot of active window", group = "screenshot"}),
-    awful.key({"Shift"            }, "Print", function () awful.spawn("/usr/bin/i3-scrot -s")   end,
-              {description = "capture a screenshot of selection", group = "screenshot"}),
+
+
+    -- By direction client focus
+
+    awful.key({ modkey }, "j",
+        function()
+            awful.client.focus.global_bydirection("down")
+            --if client.focus then client.focus:raise() end
+        end,
+        {description = "focus down", group = "client"}),
+    awful.key({ modkey }, "k",
+        function()
+            awful.client.focus.global_bydirection("up")
+           j--if client.focus then client.focus:raise() end
+        end,
+        {description = "focus up", group = "client"}),
+    awful.key({ modkey }, "h",
+        function()
+            awful.client.focus.global_bydirection("left")
+            if client.focus then client.focus:raise() end
+        end,
+        {description = "focus left", group = "client"}),
+    awful.key({ modkey }, "l",
+        function()
+            awful.client.focus.global_bydirection("right")
+            if client.focus then client.focus:raise() end
+        end,
+        {description = "focus right", group = "client"}),
+
+
+    awful.key({ modkey, "Control" }, "r", function () 
+              awful.util.spawn("monitor-hotplug.sh")
+              awesome.restart() 
+       end,
+              {description = "reload awesome", group = "awesome"}),
+
+
+    awful.key({ modkey, "Mod1"    }, "Left",     
+        function () 
+          awful.tag.incmwfact( 0.01)    
+        end),
+
+    awful.key({ modkey, "Mod1"    }, "Right",    
+        function () 
+          awful.tag.incmwfact(-0.01)  
+        end),
+
+    awful.key({ modkey, "Mod1"    }, "Down",     
+        function () 
+          awful.client.incwfact( 0.01)    
+        end),
+
+    awful.key({ modkey, "Mod1"    }, "Up",     
+        function () 
+          awful.client.incwfact(-0.01)    
+        end),
+
+
+
+ 
+    --awful.key({ modkey,           }, "z", function () awful.spawn(terminal) end,
+              --{description = "open a terminal", group = "launcher"}),
+    --awful.key({ modkey, "Control" }, "r", awesome.restart,
+              --{description = "reload awesome", group = "awesome"}),
+    --awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+              --{description = "quit awesome", group = "awesome"}),
+
+    --awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)                 end,
+              --{description = "increase master width factor", group = "layout"}),
+    --awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)                 end,
+              --{description = "decrease master width factor", group = "layout"}),
+    --awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true)        end,
+              --{description = "increase the number of master clients", group = "layout"}),
+    --awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true)        end,
+              --{description = "decrease the number of master clients", group = "layout"}),
+    --awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)           end,
+              --{description = "increase the number of columns", group = "layout"}),
+    --awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)           end,
+              --{description = "decrease the number of columns", group = "layout"}),
+    --awful.key({ modkey, "Control"}, "Escape", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
+              --{description = "launch rofi", group = "launcher"}),
+    --awful.key({ modkey,           }, "e", function () awful.spawn("/usr/bin/thunar")            end,
+              --{description = "launch filemanager", group = "launcher"}),
+    --awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                       end,
+              --{description = "select previous", group = "layout"}),
+    --awful.key({                   }, "Print", function () awful.spawn("/usr/bin/i3-scrot -d")   end,
+              --{description = "capture a screenshot", group = "screenshot"}),
+    --awful.key({"Control"          }, "Print", function () awful.spawn("/usr/bin/i3-scrot -w")   end,
+              --{description = "capture a screenshot of active window", group = "screenshot"}),
+    --awful.key({"Shift"            }, "Print", function () awful.spawn("/usr/bin/i3-scrot -s")   end,
+              --{description = "capture a screenshot of selection", group = "screenshot"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -378,7 +438,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey,           }, "x",      function (c) c:kill()                         end,
+    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -521,7 +581,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" } },
-      properties = { titlebars_enabled = true }
+      properties = { titlebars_enabled =  false}
     },
 	
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -640,14 +700,6 @@ end)
 end
 
 -- }}}
-
---client.connect_signal("property::floating", function (c)
---    if c.floating then
---        awful.titlebar.show(c)
---    else
---        awful.titlebar.hide(c)
---    end
---end)
 
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 

@@ -23,7 +23,7 @@ set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set nocompatible
 set showmode
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set backspace=indent,eol,start
 set autoindent 
 set hlsearch
@@ -47,6 +47,7 @@ Plug 'Shougo/vimproc'
 Plug 'gcmt/taboo.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 
@@ -66,10 +67,10 @@ Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ekalinin/Dockerfile.vim'
 
+" deoplete
 
-
-"Plug 'Shougo/deoplete.nvim'
-Plug 'eagletmt/neco-ghc'
+Plug 'Shougo/deoplete.nvim'
+Plug 'deoplete-plugins/deoplete-jedi'
 
 " Themes 
 Plug 'morhetz/gruvbox'
@@ -113,8 +114,14 @@ set noshowmode
 
 let g:deoplete#enable_at_startup = 1
 
+
 let g:NERDTreeDirArrows=0
 let NERDTreeIgnore = ['\.pyc$','__pycache__']
+
+nnoremap ,c :call NERDComment(0,"toggle")<CR>
+vnoremap ,c :call NERDComment(0,"toggle")<CR>
+
+
 
 "let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git\|vagrant\|lib\|env\|pyc\|target'
 
@@ -202,3 +209,8 @@ au BufNewFile,BufRead Gymfile set ft=ruby
 au BufNewFile,BufRead Matchfile set ft=ruby
 au BufNewFile,BufRead Snapfile set ft=ruby
 au BufNewFile,BufRead Scanfile set ft=ruby
+
+
+
+let g:neoformat_enabled_python = ['autopep8', 'yapf', 'docformatter']
+

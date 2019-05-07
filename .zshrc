@@ -11,6 +11,9 @@ plugins=(git)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Server.app/Contents/ServerRoot/usr/bin:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/usr/local/go/bin:/usr/texbin:/Applications/Postgres.app/Contents/Versions/9.3/bin:/path/to/compiled/postgresql/bin:/usr/local/Cellar/go/1.2.1/libexec/bin:/Users/peterzainzinger/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export PATH="$PATH:/opt/flutter/bin"
+export PATH="$PATH:/usr/bin/vendor_perl"
+
 source $ZSH/oh-my-zsh.sh
 source ~/.zlogin
 

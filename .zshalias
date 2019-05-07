@@ -18,4 +18,6 @@ alias wifi-home-fritz="nmcli c up uuid 14f06101-84d6-4e1a-8e1d-9e0e7071e214"
 alias wifi-android-ap="nmcli c up uuid 00dab389-0065-4f24-ac59-30dee30780ae"
 alias wifi-home-ceuse="nmcli c up uuid 2056407f-e3e7-419c-9c36-6625f8fb155f"
  
+alias xclip='xclip -selection c'
+alias untar='tar -zxvf'
 

@@ -1,4 +1,4 @@
-export ANDROID_HOME=/home/peter/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export PATH=${PATH}:/home/peter/Android/Sdk/platform-tools/
 export PATH=${PATH}:/usr/local/cuda/bin/
