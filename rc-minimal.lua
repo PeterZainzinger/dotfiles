@@ -48,10 +48,12 @@ beautiful.font              = "Noto Sans Regular 10"
 beautiful.notification_font = "Noto Sans Bold 14"
 
 -- This is used later as the default terminal and editor to run.
-browser = "exo-open --launch WebBrowser" or "firefox"
+browser = "google-chrome-stable --force-device-scale-factor=1.3" 
 filemanager = "exo-open --launch FileManager" or "thunar"
 gui_editor = "mousepad"
-terminal = "gnome-terminal --zoom=1.3"
+terminal = "gnome-terminal --zoom=1.8 -e tmux --hide-menubar"
+scrlocker    = "xdg-screensaver lock"
+
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -260,6 +262,8 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ modkey, "Shift"   }, "z", function () os.execute(scrlocker) end,
+              {description = "lock screen", group = "hotkeys"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -269,18 +273,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
@@ -316,13 +308,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "j",
         function()
             awful.client.focus.global_bydirection("down")
-            --if client.focus then client.focus:raise() end
+            if client.focus then client.focus:raise() end
         end,
         {description = "focus down", group = "client"}),
+
     awful.key({ modkey }, "k",
         function()
             awful.client.focus.global_bydirection("up")
-           j--if client.focus then client.focus:raise() end
+            if client.focus then client.focus:raise() end
         end,
         {description = "focus up", group = "client"}),
     awful.key({ modkey }, "h",
@@ -427,7 +420,7 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey, "Shift" }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -700,6 +693,14 @@ end)
 end
 
 -- }}}
+
+--client.connect_signal("property::floating", function (c)
+--    if c.floating then
+--        awful.titlebar.show(c)
+--    else
+--        awful.titlebar.hide(c)
+--    end
+--end)
 
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 

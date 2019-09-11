@@ -7,13 +7,11 @@ rm -rf .gitconfig .zshrc .tmux.conf .zprofile .zshalias .tmux.conf.local .zlogin
 rm -rf .ideavimrc
 rm -rf .config/awesome/rc.lua
 
-
+ln -s $Dotfiles/.ideavimrc .ideavimrc
 ln -s $Dotfiles/.gitconfig .gitconfig
 ln -s $Dotfiles/.tmux.conf .tmux.conf
-ln -s $Dotfiles/.tmux.conf.local .tmux.conf.local
 ln -s $Dotfiles/.zshrc .zshrc
 ln -s $Dotfiles/.zlogin .zlogin
 ln -s $Dotfiles/.zshalias .zshalias
 ln -s $Dotfiles/.nvimrc .config/nvim/init.vim
 ln -s $Dotfiles/rc-minimal.lua .config/awesome/rc.lua
-ls -s $Dotfiles/.ideavimrc .ideavimrc

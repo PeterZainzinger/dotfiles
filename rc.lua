@@ -386,7 +386,7 @@ globalkeys = gears.table.join(
 
     -- Default
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey, 'Shift', }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
     awful.key({ modkey }, "o", function() awful.client.movetoscreen() end, 
