@@ -15,6 +15,7 @@ local freedesktop = require("freedesktop")
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
 
+local lain = require("lain")
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -48,19 +49,31 @@ beautiful.font              = "Noto Sans Regular 10"
 beautiful.notification_font = "Noto Sans Bold 14"
 
 -- This is used later as the default terminal and editor to run.
-browser = "google-chrome-stable --force-device-scale-factor=1.3" 
+browser = "google-chrome-stable --force-device-scale-factor=1.3"
 filemanager = "exo-open --launch FileManager" or "thunar"
 gui_editor = "mousepad"
-terminal = "gnome-terminal --zoom=1.8 -e tmux --hide-menubar"
+terminal = "xterm -fa 'Ubuntu Mono derivative Powerline' -fs 18 -ls -xrm 'XTerm*selectToClipboard: true' tmux"
 scrlocker    = "xdg-screensaver lock"
 
-
+local overlay_terminal = lain.util.quake { 
+  app=terminal,
+  overlap=true,
+  height=1,
+  width=0.3333
+}
+local overlay_browser = lain.util.quake { 
+  app=terminal,
+  overlap=true,
+  height=1,
+  width=0.3333,
+  horiz="right"
+}
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+modkey = "Mod1"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
@@ -273,8 +286,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
+    awful.key({ modkey, }, "w", function () overlay_terminal:toggle() end),
+    awful.key({ modkey, }, "i", function () overlay_browser:toggle() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -420,8 +433,20 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey, "Shift" }, "p", function() menubar.show() end,
+    awful.key({ modkey, "Shift" },            "v",     function () awful.spawn("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'")  end,
+
+              {description = "show clipboard history", group = "launcher"}),
+    awful.key({ modkey, "Shift" },            "s",     function () awful.spawn("scrot -s")  end,
+
+              {description = "select screenshot area", group = "launcher"}),
+
+
+
+
+
+    awful.key({ modkey, "Shift" }, "p", function () awful.spawn("/usr/bin/rofi -show drun -modi drun") end,
               {description = "show the menubar", group = "launcher"})
+
 )
 
 clientkeys = gears.table.join(

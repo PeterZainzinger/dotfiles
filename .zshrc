@@ -16,6 +16,7 @@ export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 
 export PATH="$PATH:/opt/flutter/bin"
 export PATH="$PATH:/opt/flutter/bin/cache/dart-sdk/bin"
+export PATH="$PATH":"/opt/flutter/.pub-cache/bin"
 export PATH="$PATH:/usr/bin/vendor_perl"
 export PATH="$PATH:/home/peterz/.cargo/bin"
 
@@ -77,3 +78,5 @@ PERL5LIB="/home/peterz/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LI
 PERL_LOCAL_LIB_ROOT="/home/peterz/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/peterz/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/peterz/perl5"; export PERL_MM_OPT;
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/dotfiles/scripts

@@ -21,7 +21,6 @@ alias wifi-home-ceuse="nmcli c up uuid 2056407f-e3e7-419c-9c36-6625f8fb155f"
 alias xclip='xclip -selection c'
 alias untar='tar -zxvf'
 alias gitroot='cd $(git rev-parse --show-toplevel)'
+alias randompassword='openssl rand -base64 32'
 
-view_junit(){
-junit-viewer --results=$1 | bcat
-}
+alias vi='nvim'

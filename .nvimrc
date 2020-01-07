@@ -28,6 +28,9 @@ set autoindent
 set hlsearch
 set nofoldenable
 
+set number relativenumber
+set nu rnu
+
 
 " -------------------------------------------
 "  Plugin
@@ -62,6 +65,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'tell-k/vim-autopep8'
 Plug 'jparise/vim-graphql'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'pangloss/vim-javascript'
 "Plug 'https://framagit.org/tyreunom/coquille'
 Plug 'lervag/vimtex'
 
@@ -72,7 +76,7 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+"Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
@@ -253,6 +257,7 @@ au BufNewFile,BufRead Snapfile set ft=ruby
 au BufNewFile,BufRead Scanfile set ft=ruby
 
 autocmd BufNewFile,BufRead *.yml set syntax=yaml
+autocmd BufNewFile,BufRead *.rules set syntax=javascript
 
 
 
