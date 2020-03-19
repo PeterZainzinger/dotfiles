@@ -70,8 +70,6 @@ bindkey '^w' backward-kill-word
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
 
-export NPM_TOKEN=z2beRc5zauExJyYPMoE27d9V2o+IFR2fR0UfUhTY3zg=
-
 
 PATH="/home/peterz/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/peterz/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -80,3 +78,4 @@ PERL_MB_OPT="--install_base \"/home/peterz/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/peterz/perl5"; export PERL_MM_OPT;
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/dotfiles/scripts
+

@@ -1,16 +1,10 @@
 [user]
 	name = Peter Zainzinger
-	email = peter.zainzinger@sclable.com
+	email = peterzainzinger@gmail.com
 [core]
 	excludesfile = /Users/peterzainzinger/.gitignore_global
 	autocrlf = input
 	editor = nvim
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [branch]
 	autosetuprebase = always
 [http]
@@ -28,18 +22,14 @@
 	ui = true
 [push]
 	default = current
-[alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	d = difftool
-[diff]
-	tool = vimdiff
+
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c 'wincmd w' -c 'wincmd J'
 [difftool]
-	prompt = false
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  prompt = false
+[diff]
+  tool = vimdiff
